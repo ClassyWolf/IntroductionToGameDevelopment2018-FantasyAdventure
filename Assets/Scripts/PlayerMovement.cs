@@ -2,14 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//[RequireComponent(typeof(RigidBody2D))]
+
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float speed;
-    private Rigidbody2D rb;
+    [SerializeField] private float speed;
+    [SerializeField] private Rigidbody2D playerBody;
+    [SerializeField] private float jumpForce;
     private float moveInput;
+    
+    private PlayerStatus playerStatus;
 
-    public float jumpForce;
+    public bool isSwinging;
+
+
+
+    /*
     private bool isGrounded;
     public Transform feetPos;
     public float circleRadius;
@@ -18,27 +28,53 @@ public class PlayerMovement : MonoBehaviour
     public float jumpTime;
     private float jumpTimeCounter;
     private bool isJumping;
+    */
 
-    void Start()
+
+
+    private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();    
+        playerBody = GetComponent<Rigidbody2D>();
+        playerStatus = GetComponent<PlayerStatus>();
     }
 
-    private void Update()
+    // Give movement for player with horizontal axel
+    public void PlayerMove()
+    {
+        moveInput = Input.GetAxis("Horizontal");
+        if (moveInput > 0)
+        {
+            transform.eulerAngles = Vector3.zero;
+        }
+        playerBody.velocity = new Vector2(speed * moveInput, playerBody.velocity.y);
+    }
+
+    // Make player jump once
+    public void Jumping()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && playerStatus.isGrounded == true)
+        {
+            playerBody.velocity = new Vector2(playerBody.velocity.x, jumpForce);
+        }
+    }
+
+
+
+    /*private void Update()
     {
         isGrounded = Physics2D.OverlapCircle(feetPos.position, circleRadius);
         if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
         {
             isJumping = true;
             jumpTimeCounter = jumpTime;
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            playerBody.velocity = new Vector2(playerBody.velocity.x, jumpForce);
         }
 
         if(isJumping == true && Input.GetKey(KeyCode.Space))
         {
             if (jumpTimeCounter > 0)
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                playerBody.velocity = new Vector2(playerBody.velocity.x, jumpForce);
                 jumpTimeCounter -= Time.deltaTime;
             }
             else if (jumpTimeCounter < 0)
@@ -47,8 +83,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Space))
             isJumping = false;
-    }
+    }*/
 
+    /*
     void FixedUpdate()
     {
         moveInput = Input.GetAxis("Horizontal");
@@ -56,10 +93,11 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.eulerAngles = Vector3.zero;
         }
-        /*else if (moveInput < 0)
-        {
-            transform.eulerAngles = new Vector3(0, 180, 0);
-        }*/
-        rb.velocity = new Vector2(speed * moveInput, rb.velocity.y);
-    }
+        //else if (moveInput < 0)
+        //{
+        //   transform.eulerAngles = new Vector3(0, 180, 0);
+        //}
+        playerBody.velocity = new Vector2(speed * moveInput, playerBody.velocity.y);
+    }*/
+
 }

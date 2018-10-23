@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class QuitGame : MonoBehaviour
 {
+
+    // Shut down game application
     public void Quit()
     {
 #if UNITY_EDITOR
