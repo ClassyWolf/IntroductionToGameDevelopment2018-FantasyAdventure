@@ -21,6 +21,8 @@ public class PlayerStatus : MonoBehaviour
 
     public bool isGrounded;
 
+    public int hookCounter = 3;
+
 
 
     private void Start()
@@ -42,6 +44,11 @@ public class PlayerStatus : MonoBehaviour
         {
             isGrounded = false;
             Debug.DrawRay(raypoint.position, -raypoint.up * groundCheckdistance, Color.red);
+        }
+
+        if (isGrounded == true)
+        {
+            hookCounter = 3;
         }
     }
 
