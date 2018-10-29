@@ -7,19 +7,16 @@ public class BoxSpawner : MonoBehaviour {
     [SerializeField] private Transform obj;
     private List<GameObject> objects;
     [SerializeField] private int objectCount;
-    
+    [SerializeField] private GameObject trigger;
+    private bool canSpawn;
+
 	void Start () {
-        
+
         objects = new List<GameObject>();
 
-        for (int n = 0; n < objectCount; n++)
-        {
+        if (trigger == null && canSpawn == false) { canSpawn = true; }
 
-            SpawnNewObject();
-
-        }
-
-	}
+    }
 
     void SpawnNewObject()
     {
@@ -30,31 +27,43 @@ public class BoxSpawner : MonoBehaviour {
 
     void FixedUpdate()
     {
-        
-        for(int n=objects.Count-1; n>=0;n--)
+        if (trigger != null)
         {
-
-            GameObject A = objects[n];
-
-            if (A != null)
-            {
-
-                Transform t = A.GetComponent<Transform>();
-
-                //Check for visibility
-
-            }
-
-            else { objects.RemoveAt(n); }
-
+            if (trigger.GetComponent<Switch>().isActivated && canSpawn == false) { canSpawn = true; }
         }
 
-        if (objects.Count < objectCount)
+
+        if (canSpawn)
         {
-            for(int n=0; n<(objectCount-objects.Count); n++)
+
+            for (int n = objects.Count - 1; n >= 0; n--)
             {
-                SpawnNewObject();
+
+                GameObject A = objects[n];
+
+                if (A != null)
+                {
+
+                    Transform t = A.GetComponent<Transform>();
+
+                    //Check for visibility
+
+                }
+
+                else { objects.RemoveAt(n); }
+
             }
+
+            if (objects.Count < objectCount)
+            {
+
+                for (int n = 0; n < (objectCount - objects.Count); n++)
+                {
+                    SpawnNewObject();
+                }
+
+            }
+
         }
 
     }
