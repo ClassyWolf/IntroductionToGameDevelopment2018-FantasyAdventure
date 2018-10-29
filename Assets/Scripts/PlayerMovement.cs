@@ -5,61 +5,70 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float speed;
-    private Rigidbody2D rb;
-    private float moveInput;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float frictionMultiplier;
+    private Rigidbody2D rigidBody;
+    private Vector3 oldScale;
+    
+    public bool canJump;
 
-    public float jumpForce;
-    private bool isGrounded;
-    public Transform feetPos;
-    public float circleRadius;
-    public LayerMask whatIsGround;
-
-    public float jumpTime;
-    private float jumpTimeCounter;
-    private bool isJumping;
-
-    void Start()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();    
+        if (moveSpeed == 0) { moveSpeed = 1; }
+        if (jumpForce == 0) { jumpForce = 1; }
+        if (frictionMultiplier == 0) { frictionMultiplier = 0.85f; }
+        canJump = true;
+
+        oldScale = this.transform.localScale;
+
+        rigidBody = this.GetComponent<Rigidbody2D>();
+
     }
 
-    private void Update()
+
+    private void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCircle(feetPos.position, circleRadius);
-        if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
-        {
-            isJumping = true;
-            jumpTimeCounter = jumpTime;
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+        if (Input.GetKey(KeyCode.D))
+        { 
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x + moveSpeed, rigidBody.velocity.y);
+            if (rigidBody.velocity.x > moveSpeed) { rigidBody.velocity = new Vector2(moveSpeed, rigidBody.velocity.y); }
         }
 
-        if(isJumping == true && Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.A))
         {
-            if (jumpTimeCounter > 0)
-            {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-                jumpTimeCounter -= Time.deltaTime;
-            }
-            else if (jumpTimeCounter < 0)
-                isJumping = false;
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x-moveSpeed, rigidBody.velocity.y);
+            if (rigidBody.velocity.x < -moveSpeed) { rigidBody.velocity = new Vector2(-moveSpeed, rigidBody.velocity.y); }
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
-            isJumping = false;
-    }
-
-    void FixedUpdate()
-    {
-        moveInput = Input.GetAxis("Horizontal");
-        if(moveInput > 0)
+        if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D))
         {
-            transform.eulerAngles = Vector3.zero;
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x * frictionMultiplier, rigidBody.velocity.y);
         }
-        /*else if (moveInput < 0)
+
+        if (Input.GetKey(KeyCode.Space) && canJump == true)
         {
-            transform.eulerAngles = new Vector3(0, 180, 0);
-        }*/
-        rb.velocity = new Vector2(speed * moveInput, rb.velocity.y);
+            transform.GetComponent<Rigidbody2D>().AddForce(
+                -Physics2D.gravity * rigidBody.mass
+                + new Vector2(0f, rigidBody.velocity.y * rigidBody.mass)
+                + Vector2.up * jumpForce);
+                canJump = false;
+
+        }
+
+
+        //Jump landing is checked on triggerentity at playermodel
+
+
+        if (rigidBody.velocity.x < -0.1f) //to determine the orientation of the sprite
+        {
+            this.transform.localScale = new Vector3(oldScale.x, oldScale.y, oldScale.z);
+        }
+        else if (rigidBody.velocity.x > 0.1f)
+        {
+            this.transform.localScale = new Vector3(-oldScale.x, oldScale.y, oldScale.z);
+        }
+
     }
 }
