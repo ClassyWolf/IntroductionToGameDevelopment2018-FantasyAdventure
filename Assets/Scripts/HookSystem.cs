@@ -131,7 +131,7 @@ public class HookSystem : MonoBehaviour {
     //adding the rope to the hook and calculating the rope position
     private void HandleInput(Vector2 aimDirection)
     {
-        if (playerStatus.hookCounter >= 0)
+        if (playerStatus.hookCounter > 0)
         {
             if (Input.GetMouseButtonDown(0))
             {
