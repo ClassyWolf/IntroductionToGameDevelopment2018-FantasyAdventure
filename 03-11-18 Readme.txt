@@ -1,0 +1,10 @@
+-Changed hierarchy by moving sprites to their designated folder in prefabs folder
+
+-Fixed the prefabs 
+
+-added the new version of test map with the prefabs for demonstration purpoces
+
+*Merging of the characterstatus and the playerstatus seems really annoying so ill leave it
+to people who know how to merge -> remember the scripts like healthupdate still reference
+characterupdate so merging the script needs some changes to code*
+
