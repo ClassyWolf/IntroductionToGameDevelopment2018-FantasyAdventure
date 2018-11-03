@@ -1,9 +1,8 @@
-Prefabs:
-PlayerManager
-UICanvas
+Fixed:
+Panel prefabs of main menu -> MainMenu canvas Prefab
+PauseMenu fuctionality
+Player prefab
+UIcanvas prefab
 
-Scripts:
-UIController
-PlayerManager
-CharacterStatus
-HookSystem
+New:
+hook distance check for playerstatus script
