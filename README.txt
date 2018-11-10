@@ -1,8 +1,3 @@
-Fixed:
-Panel prefabs of main menu -> MainMenu canvas Prefab
-PauseMenu fuctionality
-Player prefab
-UIcanvas prefab
+Added a dynamic checkpoint system working with checkpoint and gamemaster
 
-New:
-hook distance check for playerstatus script
+Added a system that reloads the scene if the player is killed
