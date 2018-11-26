@@ -1,3 +1,12 @@
-Added a dynamic checkpoint system working with checkpoint and gamemaster
+Map1:
+Floor "Desing"
 
-Added a system that reloads the scene if the player is killed
+PlayerStatus Script fixed to use 3 raycast, instead of boxray
+
+MainMenu background added
+
+
+
+
+
+There is a lot of bugs, player spawn wrong place etc...
