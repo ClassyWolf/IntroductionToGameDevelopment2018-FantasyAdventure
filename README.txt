@@ -1,21 +1,16 @@
-Added player character to map1
-Added character animation, need refining
-Added character flip
-Changed the movement script to fit the animation and sound
-Changed the hook script to include sound
-Added the player character into a gameObject
+New:
+GameEnderObject Prefab
+EndGame Script
+EndGamePanel Prefab
 
-Todo: 	- create a new hooksystem that allows it to follow moving objects
-	- Figure out how to share the files since even zip can't make them small enough now
+TextMesh Pro folder in Assets folder
+TextMesh Pro Folder in Packages Folder
 
-
-
-Added a dynamic checkpoint system working with checkpoint and gamemaster
-Added a system that reloads the scene if the player is killed
-
-Tags:
-Enemy
-GM
-MoveableObject
-Puzzles
-
+Updated:
+MainMenuCanvas Prefab
+MainMenuPanel Prefab
+StartGamePanel Prefab
+SettingsPanel Prefab
+UICanvas Prefab
+PauseMenuPanel Prefab
+PauseGame Script
