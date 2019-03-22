@@ -16,8 +16,12 @@ public class PlayerStatus : MonoBehaviour
 
 
     [SerializeField] private LayerMask groundLayerMask;
-    [SerializeField] private float groundCheckdistance = 1f;
-    [SerializeField] private Transform raypoint;
+    [SerializeField] private float groundCheckDistance = 1f;
+    [SerializeField] private Transform leftGroundCheckRayPoint;
+    [SerializeField] private Transform middleGroundCheckRayPoint;
+    [SerializeField] private Transform rightGroundCheckRayPoint;
+
+
 
     public bool isGrounded;
 
@@ -29,27 +33,30 @@ public class PlayerStatus : MonoBehaviour
     {
         groundLayerMask = LayerMask.GetMask("Ground");
     }
-
-    // Check with raycast if player touch ground or not
     private void FixedUpdate()
     {
-        //RaycastHit2D hit2D = Physics2D.Raycast(raypoint.position, Vector2.down, groundCheckdistance, groundLayerMask);
-        RaycastHit2D hit2D = Physics2D.BoxCast(raypoint.position, new Vector2 (1, 1), 0f, Vector2.down, groundCheckdistance, groundLayerMask);
-        if (hit2D)
+        // Check with raycast if player touch ground or not
+
+        RaycastHit2D lefGroundChecktHit2D = Physics2D.Raycast(leftGroundCheckRayPoint.position, Vector2.down, groundCheckDistance, groundLayerMask);
+        RaycastHit2D middleGroundChecktHit2D = Physics2D.Raycast(middleGroundCheckRayPoint.position, Vector2.down, groundCheckDistance, groundLayerMask);
+        RaycastHit2D rightGroundChecktHit2D = Physics2D.Raycast(rightGroundCheckRayPoint.position, Vector2.down, groundCheckDistance, groundLayerMask);
+        //RaycastHit2D groundCheckHit2D = Physics2D.BoxCast(leftGroundCheckRayPoint.position, new Vector2(1, 1), 0f, Vector2.down, groundCheckDistance, groundLayerMask);
+        if (lefGroundChecktHit2D || middleGroundChecktHit2D || rightGroundChecktHit2D)//groundCheckHit2D)
         {
             isGrounded = true;
-            Debug.DrawRay(raypoint.position, -raypoint.up * groundCheckdistance, Color.green);
+            hookCounter = 3;
+            Debug.DrawRay(leftGroundCheckRayPoint.position, -leftGroundCheckRayPoint.up * groundCheckDistance, Color.green);
+            Debug.DrawRay(middleGroundCheckRayPoint.position, -middleGroundCheckRayPoint.up * groundCheckDistance, Color.green);
+            Debug.DrawRay(rightGroundCheckRayPoint.position, -rightGroundCheckRayPoint.up * groundCheckDistance, Color.green);
         }
         else
         {
             isGrounded = false;
-            Debug.DrawRay(raypoint.position, -raypoint.up * groundCheckdistance, Color.red);
+            Debug.DrawRay(leftGroundCheckRayPoint.position, -leftGroundCheckRayPoint.up * groundCheckDistance, Color.red);
+            Debug.DrawRay(middleGroundCheckRayPoint.position, -middleGroundCheckRayPoint.up * groundCheckDistance, Color.red);
+            Debug.DrawRay(middleGroundCheckRayPoint.position, -middleGroundCheckRayPoint.up * groundCheckDistance, Color.red);
         }
 
-        if (isGrounded == true)
-        {
-            hookCounter = 3;
-        }
     }
 
 

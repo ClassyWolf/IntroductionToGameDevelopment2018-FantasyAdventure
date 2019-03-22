@@ -21,8 +21,7 @@ GameObject:
   - component: {fileID: 4586616262217106}
   - component: {fileID: 212598433280737924}
   - component: {fileID: 60035187823307394}
-  - component: {fileID: 114005675984353202}
-  - component: {fileID: 114540975387090534}
+  - component: {fileID: 114950642239765880}
   m_Layer: 2
   m_Name: Spikes
   m_TagString: Untagged
@@ -93,7 +92,7 @@ PolygonCollider2D:
       - {x: -1.8238081, y: -1.4266621}
       - {x: 2.2999992, y: -1.2399528}
       - {x: 2.3599694, y: -0.5299062}
---- !u!114 &114005675984353202
+--- !u!114 &114950642239765880
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,24 +100,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1179619384755102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3436a0135f70e32479ea4085b57168ad, type: 3}
+  m_Script: {fileID: 11500000, guid: a7e7739d070e29149ae774dbc9d7b177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthChangeAmount: 0
+  healthChangeAmount: -1
   destroyOnContact: 0
---- !u!114 &114540975387090534
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1179619384755102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b7cbee159e0b0048af9acb4e81200fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthPoints: 5
-  maxHealth: 5
 --- !u!212 &212598433280737924
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -162,6 +148,6 @@ SpriteRenderer:
   m_Size: {x: 2.64, y: 2.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

@@ -283,9 +283,6 @@
     <Reference Include="UnityEditor.Graphs">
       <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.Android.Extensions">
-      <HintPath>Library\UnityAssemblies\UnityEditor.Android.Extensions.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>Library\UnityAssemblies\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
@@ -344,11 +341,24 @@
       <Project>{545C497F-F779-4BE4-F279-9219C94DD282}</Project>
       <Name>FantasyAdventure</Name>
     </ProjectReference>
+    <ProjectReference Include="FantasyAdventure.csproj">
+      <Project>{545C497F-F779-4BE4-F279-9219C94DD282}</Project>
+      <Name>FantasyAdventure</Name>
+    </ProjectReference>
+    <ProjectReference Include="FantasyAdventure.csproj">
+      <Project>{545C497F-F779-4BE4-F279-9219C94DD282}</Project>
+      <Name>FantasyAdventure</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Packages\com.unity.standardevents\Editor\Importer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Packages\com.unity.cinemachine\Editor\Resources\CMWaveform.compute" />
+    <None Include="Packages\com.unity.cinemachine\Editor\Resources\CMWaveform.shader" />
+    <None Include="Packages\com.unity.cinemachine\Editor\Resources\StdLib.hlsl" />
+    <None Include="Packages\com.unity.cinemachine\ReleaseNotes.txt" />
+    <None Include="Packages\com.unity.cinemachine\license.txt" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Light.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Templates\Alert.uxml" />

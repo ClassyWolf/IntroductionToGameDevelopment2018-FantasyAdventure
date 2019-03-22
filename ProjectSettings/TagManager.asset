@@ -3,7 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - GM
+  - Puzzles
+  - Particle
+  - Arm
+  - Hook
+  - FiredHook
+  - MovableObject
+  - Pivot
+  - SM
+  - DestroyOnLoad
   layers:
   - Default
   - TransparentFX
@@ -13,15 +24,15 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Hazzard
+  - Player
+  - Rope
+  - Pivot
+  - KillZone
+  - Spawn
+  - Hook
+  - FiredHook
   - 
   - 
   - 
@@ -40,4 +51,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: MainCharacter
+    uniqueID: 2060993389
+    locked: 0
+  - name: Particle
+    uniqueID: 1740023787
+    locked: 0
+  - name: PivotBall
+    uniqueID: 1358517349
+    locked: 0
+  - name: MovingStones
+    uniqueID: 1414908875
     locked: 0

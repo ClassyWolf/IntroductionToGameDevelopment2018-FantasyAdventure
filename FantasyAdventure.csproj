@@ -148,6 +148,9 @@
     <Reference Include="UnityEngine.SharedInternalsModule">
       <HintPath>Library\UnityAssemblies\UnityEngine.SharedInternalsModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.SpatialTrackingModule">
+      <HintPath>Library\UnityAssemblies\UnityEngine.SpatialTrackingModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.SpriteMaskModule">
       <HintPath>Library\UnityAssemblies\UnityEngine.SpriteMaskModule.dll</HintPath>
     </Reference>
@@ -238,26 +241,68 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\UnityAssemblies\UnityEditor.UI.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Timeline">
       <HintPath>Library\UnityAssemblies\UnityEngine.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Timeline">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TreeEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.TreeEditor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.GoogleAudioSpatializer">
+      <HintPath>Library\UnityAssemblies\UnityEditor.GoogleAudioSpatializer.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.GoogleAudioSpatializer">
       <HintPath>Library\UnityAssemblies\UnityEngine.GoogleAudioSpatializer.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.HoloLens">
+      <HintPath>Library\UnityAssemblies\UnityEditor.HoloLens.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.SpatialTracking">
+      <HintPath>Library\UnityAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>Library\UnityAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.VR">
+      <HintPath>Library\UnityAssemblies\UnityEditor.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Purchasing">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Purchasing.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.StandardEvents">
       <HintPath>Library\UnityAssemblies\UnityEngine.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+      <HintPath>Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>Library\UnityAssemblies\mscorlib.dll</HintPath>
@@ -286,26 +331,78 @@
     <Reference Include="Boo.Lang">
       <HintPath>Library\UnityAssemblies\Boo.Lang.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.PackageManagerUI.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    <Reference Include="Cinemachine">
+      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\LoadGame.cs" />
-    <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-    <Compile Include="Assets\Scripts\QuitGame.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineBasicMultiChannelPerlinEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineBlenderSettingsEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineBlendListCameraEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineBrainEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineClearShotEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineColliderEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineComposerEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineConfinerEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineExternalCameraEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineFramingTransposerEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineFreeLookEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineGroupComposerEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineHardLockToTargetEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineHardLookAtEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineMixingCameraEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineNoiseSettingsEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineOrbitalTransposerEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachinePathEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachinePOVEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineSameAsFollowTargetEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineScreenComposerGuides.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineSmoothPathEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineStateDrivenCameraEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineStoryboardEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineTargetGroupEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineTrackedDollyEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineTransposerEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineVirtualCameraBaseEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Editors\CinemachineVirtualCameraEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\EventHelpers\CinemachineTriggerActionEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Impulse\CinemachineCollisionImpulseSourceEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Impulse\CinemachineImpulseChannelPropertyDrawer.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Impulse\CinemachineImpulseChannels.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Impulse\CinemachineImpulseDefinitionPropertyDrawer.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Impulse\CinemachineImpulseEnvelopePropertyDrawer.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Impulse\CinemachineImpulseListenerEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Impulse\CinemachineImpulseSourceEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Menus\CinemachineMenu.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\PropertyDrawers\AxisStatePropertyDrawer.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\PropertyDrawers\CinemachineBlendDefinitionPropertyDrawer.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\PropertyDrawers\CinemachineTagFieldPropertyDrawer.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\PropertyDrawers\EmbeddedAssetPropertyDrawer.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\PropertyDrawers\GetSetDrawer.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\PropertyDrawers\LensSettingsPropertyDrawer.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\PropertyDrawers\MinDrawer.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\PropertyDrawers\NoiseSettingsPropertyDrawer.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\PropertyDrawers\OrbitalTransposerHeadingPropertyDrawer.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Timeline\CinemachineShotEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Utility\BaseEditor.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Utility\CinemachineLensPresets.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Utility\EmbeddedAssetHelpers.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Utility\InspectorUtility.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Utility\ReflectionHelpers.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Utility\SaveDuringPlay.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Utility\ScriptableObjectUtility.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Utility\SerializedPropertyHelper.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Windows\AboutWindow.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Windows\CinemachineColliderPrefs.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Windows\CinemachineSettings.cs" />
+    <Compile Include="Packages\com.unity.cinemachine\Editor\Windows\WaveformWindow.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Packages\com.unity.cinemachine\Editor\Resources\CMWaveform.compute" />
+    <None Include="Packages\com.unity.cinemachine\Editor\Resources\CMWaveform.shader" />
+    <None Include="Packages\com.unity.cinemachine\Editor\Resources\StdLib.hlsl" />
+    <None Include="Packages\com.unity.cinemachine\ReleaseNotes.txt" />
+    <None Include="Packages\com.unity.cinemachine\license.txt" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Dark.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Styles\Main_Light.uss" />
     <None Include="Packages\com.unity.package-manager-ui\Editor\Resources\Templates\Alert.uxml" />

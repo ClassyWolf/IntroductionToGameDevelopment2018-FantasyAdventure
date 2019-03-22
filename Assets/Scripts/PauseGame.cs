@@ -5,22 +5,28 @@ using UnityEngine;
 public class PauseGame : MonoBehaviour
 {
 
-    public Transform canvas;
+    public Transform pausePanel;
+    public Transform endGamePanel;
+    public bool canUsePauseMenu;
 
+    public void Awake()
+    {
+        canUsePauseMenu = true;
+    }
 
     // Open given panel and stop gametime or close panel and start gametime again when pressed esc
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && canUsePauseMenu == true)
         {
-            if (canvas.gameObject.activeInHierarchy == false)
+            if (pausePanel.gameObject.activeInHierarchy == false)
             {
-                canvas.gameObject.SetActive(true);
+                pausePanel.gameObject.SetActive(true);
                 Time.timeScale = 0;
             }
             else
             {
-                canvas.gameObject.SetActive(false);
+                pausePanel.gameObject.SetActive(false);
                 Time.timeScale = 1;
             }
         }
@@ -28,8 +34,12 @@ public class PauseGame : MonoBehaviour
 
     public void UnPauseGame()
     {
-        canvas.gameObject.SetActive(false);
+        pausePanel.gameObject.SetActive(false);
         Time.timeScale = 1;
+        if (canUsePauseMenu == false)
+        {
+            canUsePauseMenu = true;
+        }
     }
 
 }

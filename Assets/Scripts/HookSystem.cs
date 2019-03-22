@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerStatus))]
 [RequireComponent(typeof(PlayerMovement))]
@@ -13,14 +14,14 @@ public class HookSystem : MonoBehaviour {
     public SpriteRenderer crosshairSprite;
     public PlayerMovement playerMovement;
     public PlayerStatus playerStatus;
-    private bool attached;
+    public bool attached;
     private Vector2 playerPosition;
     private Rigidbody2D hingeAnchorRb;
     private SpriteRenderer hingeAnchorSprite;
 
     public LineRenderer ropeRender;
     public LayerMask ropeLayerMask;
-    private float ropeMaxCastDistance = 20f;
+    public float ropeMaxCastDistance = 10f;
     private List<Vector2> ropePositions = new List<Vector2>();
 
     private bool distanceSet;
@@ -33,12 +34,28 @@ public class HookSystem : MonoBehaviour {
     public float climbSpeed = 3f;
     private bool isColliding;
 
+    [SerializeField] private Text hookText;
+
+    private Vector3 MouseCoords;
+    public float MouseSensitivity = 0.1f;
+
+    public AudioClip hookShot;
+    public AudioClip release;
+
+    private void Start()
+    {
+        hookText.text = "Hooks: " + playerStatus.hookCounter.ToString();
+    }
+
+
+
+
     void Awake()
     {
         //adding and enabling the hook to the player
         playerJoint.enabled = false;
         playerPosition = transform.position;
-        hingeAnchorRb = hingeAnchor.GetComponent<Rigidbody2D>();
+        hingeAnchorRb = hingeAnchor.GetComponentInChildren<Rigidbody2D>();
         hingeAnchorSprite = hingeAnchor.GetComponent<SpriteRenderer>();
     }
 	
@@ -67,13 +84,13 @@ public class HookSystem : MonoBehaviour {
         }
         else
         {
+
             playerMovement.isSwinging = true;
             hook = ropePositions.Last();
 
             crosshairSprite.enabled = false;
-
             //if the ropepositions has anything stored then do this
-            if(ropePositions.Count > 0)
+            if (ropePositions.Count > 0)
             {
                 //fires a raycast form the players position to the last position
                 var lastRopePoint = ropePositions.Last();
@@ -110,10 +127,12 @@ public class HookSystem : MonoBehaviour {
 
         HandleRopeLength();
 
+        hookText.text = "Hooks: " + playerStatus.hookCounter.ToString();
+
         //HandleRopeUnwrap();
     }
 
-    //crosshair enabling and calculation
+    //crosshair position
     private void SetCrosshairPosition(float aimAngle)
     {
         if (!crosshairSprite.enabled)
@@ -121,8 +140,8 @@ public class HookSystem : MonoBehaviour {
             crosshairSprite.enabled = true;
         }
 
-        var x = transform.position.x + 1f * Mathf.Cos(aimAngle);
-        var y = transform.position.y + 1f * Mathf.Sin(aimAngle);
+        var x = transform.position.x + 10f * Mathf.Cos(aimAngle);
+        var y = transform.position.y + 6f * Mathf.Sin(aimAngle);
 
         var crossHairPosition = new Vector3(x, y, 0);
         crosshair.transform.position = crossHairPosition;
@@ -135,6 +154,7 @@ public class HookSystem : MonoBehaviour {
         {
             if (Input.GetMouseButtonDown(0))
             {
+                //SoundManager.instance.PlaySingle(hookShot);
                 if (attached) return;
                 ropeRender.enabled = true;
 
@@ -142,16 +162,21 @@ public class HookSystem : MonoBehaviour {
 
                 if (hit.collider != null)
                 {
-                    attached = true;
+                    attached = true;                    
                     if (!ropePositions.Contains(hit.point))
                     {
                         //small jump after gappling to someting
                         transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0f, 2f), ForceMode2D.Impulse);
                         ropePositions.Add(hit.point);
-                        playerJoint.distance = Vector2.Distance(playerPosition, hit.point);
                         playerJoint.enabled = true;
+                        playerJoint.distance = Vector2.Distance(playerPosition, hit.point);
+                        //playerJoint.connectedAnchor = hit.point;
+                        
                         hingeAnchorSprite.enabled = true;
                     }
+
+                    //playerMovement.PullPlayer();
+                    //GetComponent<DistanceJoint2D>().distance = 0.05f;
                 }
                 else
                 {
@@ -166,6 +191,7 @@ public class HookSystem : MonoBehaviour {
                 Debug.Log(playerStatus.hookCounter);
                 playerStatus.hookCounter--;
                 ResetRope();
+                //SoundManager.instance.PlaySingle(release);
             }
         }
 
@@ -183,14 +209,19 @@ public class HookSystem : MonoBehaviour {
     //removing the rope after unattaching
     private void ResetRope()
     {
-        playerJoint.enabled = false;
+        playerJoint.distance = 0.05f;
+        hingeAnchorRb.transform.position = playerPosition;
+        if (playerJoint.distance <= 0.05f)
+        {
+            playerJoint.enabled = false;
+        }
         attached = false;
         playerMovement.isSwinging = false;
         ropeRender.positionCount = 2;
         ropeRender.SetPosition(0, transform.position);
         ropeRender.SetPosition(1, transform.position);
         ropePositions.Clear();
-        hingeAnchorSprite.enabled = false;
+        //hingeAnchorSprite.enabled = false;
 
         wrapPointsLookup.Clear();
     }
@@ -199,7 +230,7 @@ public class HookSystem : MonoBehaviour {
     private void UpdateRopePositions()
     {
         //returns if the hook is not attached
-        if(!attached)
+        if (!attached)
         {
             return;
         }
@@ -261,7 +292,7 @@ public class HookSystem : MonoBehaviour {
         }
     }
 
-    //Makes the raycast collder dependet and needs to be adjusted accordingly
+    //Makes the raycast collider dependet and needs to be adjusted accordingly
     private Vector2 GetClosestColliderPointFromRayCastHit(RaycastHit2D hit, PolygonCollider2D polyCollider)
     {
         //LINQ query, converts the polygon colliders points into vector2 positions

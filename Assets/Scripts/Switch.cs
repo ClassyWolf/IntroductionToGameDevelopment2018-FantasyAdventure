@@ -4,25 +4,33 @@ using UnityEngine;
 
 public class Switch : MonoBehaviour {
 
-    public bool isActivated;
-    
-    void start()
+    public bool isActivated = false;
+    private Vector3 scale;
+
+    void Start()
     {
-        isActivated = false;
+        scale =this.transform.localScale;
     }
-	
+
     void OnTriggerEnter2D(Collider2D colliderObject)
     {
-        if (colliderObject.tag=="Player" && isActivated==false)
+        if (colliderObject.tag=="Player")
         {
+
             isActivated = true;
 
-            Vector3 scale = this.transform.localScale;
-            this.transform.localScale = new Vector3(-scale.x,scale.y,scale.z);
-
-            print("hit");
+            if (this.tag == "Trigger_reset")
+            {
+                GetComponentInParent<TriggerMerger>().PerformResetOnTriggers();
+            }
 
         }
+    }
+
+    void FixedUpdate()
+    {
+        if (isActivated){ this.transform.localScale = new Vector3(-scale.x, scale.y, scale.z); }
+        else { this.transform.localScale = scale; }
     }
 
 }

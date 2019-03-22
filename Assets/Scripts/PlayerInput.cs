@@ -7,8 +7,6 @@ public class PlayerInput : MonoBehaviour
 
     private PlayerMovement playerMovement;
 
-
-
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
